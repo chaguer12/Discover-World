@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/index',function(){
+    return view('index');
+});
+
 // Route::get('/blog',function (Request $request){
 //     return [
 //         'link' => \route('blog.show',['slug' => 'article', 'id' => '13'])
