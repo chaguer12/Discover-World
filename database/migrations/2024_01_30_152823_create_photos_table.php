@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->binary('image');
-            $table->integer('recit_id')
-            ->nullable()
-            ->foreign('recit_id')
-            ->constrained('recits');
-            $table->integer('dest_id')
-            ->nullable()
-            ->foreign('dest_id')
-            ->constrained('destinations');
+            $table->unsignedBigInteger('recit_id');
+            $table->foreign('recit_id')
+                  ->references('id')
+                  ->on('recits');
+            $table->unsignedBigInteger('dest_id');
+            $table->foreign('dest_id')
+                  ->references('id')
+                  ->on('destinations');
             $table->timestamps();
         });
     }

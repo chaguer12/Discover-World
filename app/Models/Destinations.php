@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Destinations extends Model
 {
     use HasFactory;
+    
 }
