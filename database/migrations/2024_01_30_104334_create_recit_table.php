@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content');
+            $table->unsignedBigInteger('dest_id');
+            $table->foreign('dest_id')
+            ->references('id')
+            ->on('destinations');
             $table->timestamps();
         });
     }
