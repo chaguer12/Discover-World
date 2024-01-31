@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->binary('image');
-            $table->unsignedBigInteger('recit_id')
+            $table->integer('recit_id')
             ->nullable()
             ->foreign('recit_id')
             ->constrained('recits');
-            $table->unsignedBigInteger('dest_id')
+            $table->integer('dest_id')
             ->nullable()
             ->foreign('dest_id')
             ->constrained('destinations');
