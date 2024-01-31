@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('destination', function (Blueprint $table) {
             $table->id();
             $table->string('dest_name');
+            $table->foreignId('pic_id')->constrained('photos');
             $table->timestamps();
         });
     }
