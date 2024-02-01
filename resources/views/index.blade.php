@@ -93,6 +93,7 @@ Exploring Horizons
 	</div>
 </section>
     
-@include('includes/footer')  
+@include('includes/footer') 
+@include('includes/modal') 
 </body>
 </html>

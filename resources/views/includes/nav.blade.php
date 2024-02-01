@@ -31,7 +31,7 @@
 			<li><a class="text-sm text-gray-400 hover:text-blue-600 font-bold" href="">Contact</a></li>
 		</ul>
 		
-		<button id="add" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" >Add an article</button>
+		<button id="add" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" onclick="toggleNavbar()">Add an article</button>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -61,7 +61,7 @@
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
 					</li>
 					<li class="mb-1">
-                    <button id="add" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" >Add an article</button>
+                    <button id="add" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" onclick="toggleNavbar()">Add an article</button>
 					</li>
 				</ul>
 			</div>
@@ -73,6 +73,7 @@
 			</div>
 		</nav>
 	</div>
+
 
 
 <script>
