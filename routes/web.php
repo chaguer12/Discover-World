@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/index',function(){
     return view('index');
 });
+Route::get('/destination',function(){
+    return view('destination');
+});
 
 // Route::get('/blog',function (Request $request){
 //     return [
