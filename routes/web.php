@@ -2,6 +2,7 @@
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,10 @@ Route::get('/index',function(){
     return view('index');
 });
 Route::get('/destination',function(){
-    return view('destination');
+    $destinations = DB::table('destinations')->get();
+    return view('destination',[
+        'destinations' => $destinations
+    ]);
 });
 
 // Route::get('/blog',function (Request $request){
