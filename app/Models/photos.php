@@ -12,6 +12,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class photos extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        "image",
+        "recit_id",
+
+    ];
 
     public function Destination() :HasOne{
         return $this->hasOne(Photos::class);

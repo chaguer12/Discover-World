@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->binary('image');
+            $table->string('image');
             $table->unsignedBigInteger('recit_id');
             $table->foreign('recit_id')
                   ->references('id')
-                  ->on('recits');
+                  ->on('recits')
+                  ->nullable();
             $table->unsignedBigInteger('dest_id');
             $table->foreign('dest_id')
                   ->references('id')
-                  ->on('destinations');
+                  ->on('destinations')
+                  ->nullable();
             $table->timestamps();
         });
     }
