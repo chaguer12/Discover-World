@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Recits extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        "title",
+        "content",
+        "dest_id"
+    ];
 
     public function Photos():HasMany{
         return $this->hasMany(Photos::class);

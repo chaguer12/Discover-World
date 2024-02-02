@@ -21,7 +21,10 @@ Route::get('/', function () {
 });
 
 Route::get('/index',function(){
-    return view('index');
+    $destinations = DB::table('destinations')->get();
+    return view('index',[
+        'destinations' => $destinations
+    ]);
 });
 
 Route::get('/destination',function(){
@@ -32,6 +35,7 @@ Route::get('/destination',function(){
 });
 
 Route::get('/insert', [Recit::class,'insert'])->name('recit.insert');
+Route::post('/insert', [Recit::class,'inserting'])->name('recit.inserting');
 
 
 
