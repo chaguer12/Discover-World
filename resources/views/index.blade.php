@@ -95,5 +95,7 @@ Exploring Horizons
     
 @include('includes/footer') 
 @include('includes/modal') 
+<script src="{{ asset('js/modal.js') }}"></script>
+
 </body>
 </html>
