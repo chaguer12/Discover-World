@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('recits', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->longText('content');
             $table->unsignedBigInteger('dest_id');
             $table->foreign('dest_id')

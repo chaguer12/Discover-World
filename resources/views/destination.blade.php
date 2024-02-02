@@ -38,5 +38,7 @@
 </section>
 
 @include('includes/footer') 
+@include('includes/modal') 
+<script src="{{ asset('js/modal.js') }}"></script>
 <script src="{{ asset('js/carousel.js') }}"></script>
 </body>

@@ -1,4 +1,7 @@
-<div id="modal" class="flex justify-center  fixed z-10 inset-0 overflow-y-auto hidden">
+@include('includes/head')
+<body class="bg-gray-200">
+@include('includes/nav')
+<div id="modal" class="flex justify-center  fixed z-10 inset-0 overflow-y-auto ">
       <div class="flex items-center justify-center min-h-screen">
         <div class="relative bg-white w-3/4 p-6 rounded shadow-lg">
           <!-- Modal Close Button -->
@@ -70,3 +73,5 @@
       </div>
     </div>
     
+
+</body>
