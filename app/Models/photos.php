@@ -23,6 +23,6 @@ class photos extends Model
     }
 
     public function Recits():BelongsTo{
-        return $this->belongsTo(Recits::class);
+        return $this->belongsTo(Recits::class , 'recits_id');
     }
 }

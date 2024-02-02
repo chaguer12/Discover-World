@@ -21,8 +21,10 @@ class Recit extends Controller
         
             $destinations = Destinations::all();
             $totaldestinations = Destinations::count();
-            $recits = Recits::with('Photos','Destination');
+            $recits = Recits::with('Photos','Destination')->get();
             $totalArticles = Recits::count();
+
+           
 
             return view('index',[
                 'destinations' => $destinations,
