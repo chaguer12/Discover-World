@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destinations;
 use App\Models\Recits;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -14,6 +15,21 @@ class Recit extends Controller
 
         $this->imageService = $imageService;
 
+    }
+
+    public function index(){
+        
+            $destinations = Destinations::all();
+            $totaldestinations = Destinations::count();
+            $recits = Recits::with('Photos','Destination');
+            $totalArticles = Recits::count();
+
+            return view('index',[
+                'destinations' => $destinations,
+                'totalArticles' => $totalArticles,
+                'recits' => $recits,
+                'totaldetinations' => $totaldestinations
+            ]);
     }
    public function insert(){
     $destinations = DB::table('destinations')->get();
@@ -32,5 +48,14 @@ class Recit extends Controller
         $this->imageService->store($request->file('images'),$recits);
         
         return view('index');
+   }
+
+   public function recit_stat(){
+        $totalrecits = Recits::count();
+        return view('index',[
+
+        ]);
+
+
    }
 }

@@ -16,16 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/index',function(){
-    $destinations = DB::table('destinations')->get();
-    return view('index',[
-        'destinations' => $destinations
-    ]);
-});
+Route::get('/index',[Recit::class,'index'])->name('index');
 
 Route::get('/destination',function(){
     $destinations = DB::table('destinations')->get();

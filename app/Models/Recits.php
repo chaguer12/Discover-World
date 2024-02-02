@@ -18,4 +18,9 @@ class Recits extends Model
     public function Photos():HasMany{
         return $this->hasMany(Photos::class);
     }
+
+    public function Destination() {
+        return $this->belongsto(Destinations::class,'dest_id');
+    }
+
 }
