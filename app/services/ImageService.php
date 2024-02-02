@@ -23,6 +23,7 @@ class ImageService
     
     public function moveImage($image)
     {
+       
         $imageName = time() . "." . $image->extension();
         $image->move(public_path('images/storage'), $imageName);
         return $imageName;

@@ -1,18 +1,18 @@
 @include('includes/head')
 
-<body class="bg-gray-200">
+<body  class="bg-gray-200">
     @include('includes/nav')
     <h1 class="p-8 xl:text-5xl md:text-4xl text-2xl font-semibold leading-tight text-center text-gray-800 sm:mb-0 mb-12">
         Experiment sharing knowledge
     </h1>
-    <div class="flex justify-center   inset-0 ">
+    <div id="bg" class="flex justify-center   inset-0 ">
         <div class="flex items-center justify-center min-h-screen">
             <div class="relative bg-white w-4/5 p-6 rounded shadow-lg">
                 <!-- Modal Close Button -->
 
 
                 <!-- Modal Content - Form -->
-                <form class="space-y-4" enctype="multipart/form-data" method="post" action="/insert">
+                <form  class="space-y-4" enctype="multipart/form-data" method="post" action="/insert">
                     <!-- Form Fields -->
                     @csrf
                     <div class="mb-4">
@@ -20,7 +20,7 @@
                         <input type="text" id="title" name="title" class="mt-1 p-2 w-full border rounded-md" placeholder="Enter the title" />
 
                         @error('title')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="text-lg text-red-600">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -29,7 +29,7 @@
                         <textarea id="content" name="content" class="mt-1 p-2 w-full border rounded-md" placeholder="Enter the content"></textarea>
 
                         @error('content')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="text-lg text-red-600">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-4">
@@ -51,7 +51,7 @@
                         <input type="file" id="image" name="images[]" accept="image/*" class="mt-1 p-2 w-full border rounded-md" multiple />
 
                         @error('image')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="text-lg text-red-600">{{ $message }}</div>
                         @enderror
                     </div>
 
