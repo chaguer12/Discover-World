@@ -39,15 +39,25 @@ Exploring Horizons
 		</a>
 		<div class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		@foreach($recits as $recit)
-			<a rel="noopener noreferrer" href="#" class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
-				<img role="presentation" class="object-cover w-full rounded h-44 dark:bg-gray-500" src="{{ asset('images/storage' . $recit->image) }}">
-				<div class="p-6 space-y-2">
-					<h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">{{$recit->title}}</h3>
-					<span class="text-xs dark:text-gray-400">{{$recit->created_at}}</span>
-					<p>{{$recit->content}}</p>
-				</div>
-			</a>
-		@endforeach
+    @php
+        $photo = $recit->Photos; 
+    @endphp
+    <a rel="noopener noreferrer" href="{{ route('show', ['id' => $recit->id]) }}" class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
+    @foreach($recit->Photos as $photo)
+    
+			<img id="item" src="{{ asset( $photo->image) }}" alt="recit image" class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
+    
+    @endforeach
+
+        <div class="p-6 space-y-2">
+            <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">{{ $recit->title }}</h3>
+            <span class="text-xs dark:text-gray-400">{{ $recit->created_at }}</span>
+            <p>{{ $recit->content }}</p>
+        </div>
+    </a>
+@endforeach
+
+
 		
 		
 		</div>
@@ -60,6 +70,6 @@ Exploring Horizons
 @include('includes/footer') 
 
 
-
+<script src="{{ asset('js/carousel.js') }}"></script>
 </body>
 </html>

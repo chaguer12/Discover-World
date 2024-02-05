@@ -24,7 +24,7 @@ class Recit extends Controller
             $recits = Recits::with('Photos','Destination')->get();
             $totalArticles = Recits::count();
 
-           
+        //    dd($recits);
 
             return view('index',[
                 'destinations' => $destinations,
@@ -59,5 +59,11 @@ class Recit extends Controller
         ]);
 
 
+   }
+   public function get_recit($id){
+        $recit = Recits::with('photos')->findOrFail($id);
+       
+        return view('recits',['recit'=>$recit]);
+        
    }
 }

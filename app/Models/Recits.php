@@ -12,10 +12,11 @@ class Recits extends Model
     protected $fillable = [
         "title",
         "content",
-        "dest_id"
+        "dest_id",
+        'image',
     ];
 
-    public function Photos():HasMany{
+    public function Photos(){
         return $this->hasMany(Photos::class);
     }
 
