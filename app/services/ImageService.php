@@ -31,7 +31,7 @@ class ImageService
                 $imageName = $this->moveImage($image);
                 Photos::create([
                     "image" => $imageName,
-                    "recit_id" => $recits->id
+                    "recits_id" => $recits->id
                 ]);
             } else {
                 // Handle if $image is not an instance of UploadedFile

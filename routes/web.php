@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/index',[Recit::class,'index'])->name('index');
+Route::get('/index/oldest',[Recit::class,'old_recits'])->name('old');
+Route::get('/index/newest',[Recit::class,'new_recits'])->name('new');
 
 Route::get('/destination',function(){
     $destinations = DB::table('destinations')->get();
@@ -26,9 +28,7 @@ Route::get('/destination',function(){
     ]);
 });
 
-Route::get('/recits', function() {
-    return view('recits');
-})->name('recits');
+Route::get('/recits/{dest_id}', [Recit::class, 'filter_recits'])->name('recits');
 Route::get('/recits/{id}',[Recit::class,'get_recit'])->name('show');
 Route::get('/insert', [Recit::class,'insert'])->name('recit.insert');
 Route::post('/insert', [Recit::class,'inserting'])->name('recit.inserting');

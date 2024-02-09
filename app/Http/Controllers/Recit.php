@@ -21,16 +21,17 @@ class Recit extends Controller
         
             $destinations = Destinations::all();
             $totaldestinations = Destinations::count();
+            
             $recits = Recits::with('Photos','Destination')->get();
             $totalArticles = Recits::count();
 
-        //    dd($recits);
+          
 
             return view('index',[
                 'destinations' => $destinations,
                 'totalArticles' => $totalArticles,
                 'recits' => $recits,
-                'totaldetinations' => $totaldestinations
+                'totaldestinations' => $totaldestinations
             ]);
     }
    public function insert(){
@@ -49,13 +50,17 @@ class Recit extends Controller
         $recits = Recits::create($incomingFields);
         $this->imageService->store($request->file('images'),$recits);
         
-        return view('index');
+        return redirect()->action([Recit::class, 'index']);
+   }
+   public function filter_recits($dest_id){
+        $recits = Recits::where('dest_id', $dest_id)->with('Photos','Destination')->get();
+        return view('recits')->with('recits', $recits);
    }
 
    public function recit_stat(){
         $totalrecits = Recits::count();
         return view('index',[
-
+            'totalrecits' => $totalrecits,
         ]);
 
 
@@ -65,5 +70,33 @@ class Recit extends Controller
        
         return view('recits',['recit'=>$recit]);
         
+   }
+   public function new_recits(){
+        $destinations = Destinations::all();
+        $totaldestinations = Destinations::count();
+        $totalArticles = Recits::count();
+        $recits = Recits::with('Photos','Destination')->orderBy("created_at", "desc")->get();
+         return view('index',[
+                'destinations' => $destinations,
+                'totalArticles' => $totalArticles,
+                'recits' => $recits,
+                'totaldestinations' => $totaldestinations
+            ]);
+
+
+   }
+
+   public function old_recits(){
+        $destinations = Destinations::all();
+        $totaldestinations = Destinations::count();
+        $totalArticles = Recits::count();
+        $recits = Recits::with('Photos','Destination')->orderBy("created_at", "asc")->get();
+         return view('index',[
+                'destinations' => $destinations,
+                'totalArticles' => $totalArticles,
+                'recits' => $recits,
+                'totaldestinations' => $totaldestinations
+            ]);
+
    }
 }

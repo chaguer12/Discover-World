@@ -1,3 +1,4 @@
+
 @include('includes/head')
 <body class="bg-gray-200">
     @include('includes/nav')
@@ -11,10 +12,10 @@ Exploring Horizons
             <img src="https://i.ibb.co/SXKj9Mf/map-bg.png" alt="mobile-image" class="sm:hidden -mt-10 block w-full h-96 object-cover object-fill absolute z-0" />
 
             <div class="shadow-lg xl:p-6 p-4 sm:w-auto w-full bg-white sm:absolute relative z-20 sm:mt-0 mt-4 left-0 xl:ml-56 sm:ml-12 xl:-mt-40 ">
-                <p class="text-3xl font-semibold text-gray-800">{{$totaldetinations}}+</p>
+                <p class="text-3xl font-semibold text-gray-800">{{$totaldestinations}}+</p>
                 <p class="text-base leading-4 xl:mt-4 mt-2 text-gray-600">Destinations</p>
             </div>
-            <div class="shadow-lg xl:p-6 p-4 w-48 sm:w-auto w-full bg-white sm:absolute relative z-20 sm:mt-0 mt-4 xl:mt-80  xl:-ml-0 sm:-ml-12">
+            <div class="shadow-lg xl:p-6 p-4 sm:w-auto w-full bg-white sm:absolute relative z-20 sm:mt-0 mt-4 xl:mt-80  xl:-ml-0 sm:-ml-12">
                 <p class="text-3xl font-semibold text-gray-800">{{ $totalArticles }}+</p>
                 <p class="text-base leading-4 xl:mt-4 mt-2 text-gray-600">Active articles</p>
             </div>
@@ -27,7 +28,17 @@ Exploring Horizons
     </section>
 
 <section class="dark:bg-gray-800 dark:text-gray-100 p-8">
-
+<div class="ml-6">
+<a href="{{ route('old') }}" class="bg-blue-500 shadow-sm  text-white hover:shadow-lg font-bold py-2 px-4 rounded inline-flex items-center">
+  
+  <span>Oldest</span>
+</a>
+<a href="{{route('new')}}" class="bg-blue-500 shadow-sm  text-white hover:shadow-lg font-bold py-2 px-4 rounded inline-flex items-center">
+  
+  <span>Newest</span>
+</a>
+</div>
+</button>
 	<div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
 		<a rel="noopener noreferrer" href="#" class="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
 			<img src="https://source.unsplash.com/random/480x360" alt="" class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
@@ -39,20 +50,21 @@ Exploring Horizons
 		</a>
 		<div class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		@foreach($recits as $recit)
+
     @php
         $photo = $recit->Photos; 
     @endphp
     <a rel="noopener noreferrer" href="{{ route('show', ['id' => $recit->id]) }}" class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900">
-    @foreach($recit->Photos as $photo)
     
-			<img id="item" src="{{ asset( $photo->image) }}" alt="recit image" class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
     
-    @endforeach
+			<img id="item" src="{{ asset( $photo[0]->image ?? false) }}" alt="recit image" class="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
+    
+   
 
         <div class="p-6 space-y-2">
             <h3 class="text-2xl font-semibold group-hover:underline group-focus:underline">{{ $recit->title }}</h3>
             <span class="text-xs dark:text-gray-400">{{ $recit->created_at }}</span>
-            <p>{{ $recit->content }}</p>
+            <p>{{ substr($recit->content, 0, 300) }}...</p>
         </div>
     </a>
 @endforeach
