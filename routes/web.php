@@ -28,7 +28,7 @@ Route::get('/destination',function(){
     ]);
 });
 
-Route::get('/recits/{dest_id}', [Recit::class, 'filter_recits'])->name('recits');
+Route::get('/destination/{dest_id}', [Recit::class, 'filter_recits'])->name('recits');
 Route::get('/recits/{id}',[Recit::class,'get_recit'])->name('show');
 Route::get('/insert', [Recit::class,'insert'])->name('recit.insert');
 Route::post('/insert', [Recit::class,'inserting'])->name('recit.inserting');

@@ -54,7 +54,7 @@ class Recit extends Controller
    }
    public function filter_recits($dest_id){
         $recits = Recits::where('dest_id', $dest_id)->with('Photos','Destination')->get();
-        return view('recits')->with('recits', $recits);
+        return view('index')->with('recits', $recits);
    }
 
    public function recit_stat(){
@@ -66,9 +66,10 @@ class Recit extends Controller
 
    }
    public function get_recit($id){
-        $recit = Recits::with('photos')->findOrFail($id);
-       
-        return view('recits',['recit'=>$recit]);
+        $recits = Recits::with('photos')->findOrFail($id)->get();
+        return view('recits',[
+            'recits' => $recits
+        ]);
         
    }
    public function new_recits(){

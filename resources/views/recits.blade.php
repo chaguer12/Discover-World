@@ -4,9 +4,9 @@
 
 <section>
     
-    
-@foreach($recits as $recit)
+ 
 
+@foreach($recits as $recit)
 @php
     $photo = $recit->Photos; 
 @endphp
